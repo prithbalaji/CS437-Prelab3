@@ -9,3 +9,15 @@
             writer = csv.writer(csvfile)
             writer.writerow(['RSSI', 'Timestamp'])
             writer.writerow([cur_dict['rssi'], time])
+
+
+df = pd.read_csv(file_name, parse_dates=["timestamp"])
+
+plt.figure(figsize=(12, 6))
+plt.plot(df["timestamp"], df["rssi"], label="RSSI")
+plt.xlabel("Time")
+plt.ylabel("RSSI (dBm)")
+plt.title("RSSI vs. Time")
+plt.legend()
+plt.grid(True)
+plt.show()
